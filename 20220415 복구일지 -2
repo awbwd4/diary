@@ -1,0 +1,13 @@
+20220415 복구일지 -2
+1. 테스트용 데이터
+   1) python manage.py seed_rooms --number xx : 와 같은 seed 기능을 이용해 복원
+2. superuser
+   1) python manage.py createsuperuser 명령어로 새로 만듦
+   2) StringPasswordValidation : superuser의 비번을 1234로 하려고 했더니 해당 validation이 없다는 에러메시지가 나옴, 기억을 돌이켜보니 내가 만든 밸리데이션이었음.
+   3) git에는 django-framework의 소스코드가 올라가진 않는데, 해당 밸리데이션은 내가 새로 작성하긴했지만 기존의 프레임워크에 추가 작성한 코드라서 Git에는 올라가지 않았던 모양
+   4) settings.py에서 해당 밸리데이션을 지워주었다.
+3. mailgun 및 dotenv
+   1) 걱정했는데 쉽게 재발급을 받을 수 있었고 dotenv의 mailgun 내용도 복구했음
+3. signup
+   1) 이게 문제인데, 폼에다가 내용을 작성하고 signup버튼을 눌러도 아무런 반응이 없음
+      - signup.html -> urls.py -> users/view.py 로 가야하는데 view로 데이터가 넘어가는지 여부를 모르겠음ㅜㅜ 확인해봐야함.
