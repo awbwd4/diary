@@ -20,7 +20,9 @@
     - pull request가 뜰 때도 있고 아닐때도 있었음.
     - default 브랜치가 origin/master였으므로, origin/master가 아닌 다른 원격 브랜치로 푸쉬를 했을 때에만 origin/master 화면에서 pull request를 확인 할 수 있었던것.
     - 따라서 default 브랜치를 origin/main으로 변경
+    - "git remote set-head origin 원격브랜치이름" 을 써서 origin/HEAD도 변경해줌
     - 로컬 브랜치는 main만 남기고 전부 삭제
+    
     
    4. github contribution문제
     - github 계정은 [user.name : awbwd4 / user.email : awbwd4@gmail.com]인데 푸쉬를 하는 계정이 다를 경우에는 contribution이 일어나지 않는거였음.
