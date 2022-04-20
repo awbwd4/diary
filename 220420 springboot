@@ -1,0 +1,12 @@
+22.04.20 스프링 부트 드디어 시작
+
+  1. Spring Boot, intelliJ, Gradle
+    1) 자바+스프링으로 다시 돌아오니 속이 시원하다
+    2) Spring boot
+       - 기존의 Spring 과는 다르게 톰캣 설치라든지 환경 설정 등에 시간을 많이 투자하지 않아도 웬만한건 다 내장되어있다.
+  
+  2. Spring
+     1) uri에서 요청이 들어올 경우, 먼저 Controller에서 해당 uri에 맞는 메서드를 매칭해준다(GetMapping 어노테이션 사용)
+     2) 해당 uri에서는 응답 uri로 보낼 데이터가 있다면 그걸 model 객체로 받은뒤에, model객체와 함께 응답 uri로 이동시켜준다.
+     3) 응답 uri로의 이동은 해당 메서드의 return값으로 정해진다.
+     4) 컨트롤러에서 리턴값으로 문자를 반환하면 view resolver가 templates 디ㅌ렉토리 안의 "리턴값".html을 알아서 찾아서 렌더링해준다.
