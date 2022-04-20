@@ -10,3 +10,12 @@
      2) 해당 uri에서는 응답 uri로 보낼 데이터가 있다면 그걸 model 객체로 받은뒤에, model객체와 함께 응답 uri로 이동시켜준다.
      3) 응답 uri로의 이동은 해당 메서드의 return값으로 정해진다.
      4) 컨트롤러에서 리턴값으로 문자를 반환하면 view resolver가 templates 디ㅌ렉토리 안의 "리턴값".html을 알아서 찾아서 렌더링해준다.
+
+  3. build
+    1) 터미널을 통해서 프로젝트 디렉토리로 이동.
+    2) 디렉토리 안에 gradlew가 있다. 명령어 ./gradle build 입력( 잘 안될경우에는 ./gradle clean build)
+    3) 빌드 한 뒤에 ~/build/libs로 이동
+    4) 해당 폴더 안에 18m 짜리 (여튼 제일 큰) jar 파일이 있음
+    5) java -jar hello-spring-0.0.1-SNAPSHOT.jar
+    6) 이러면 서버에 빌드된다.
+    7) 다른 서버에서도 이 jar파일만 옮겨서 해당 서버에서 빌드하면 됨!
