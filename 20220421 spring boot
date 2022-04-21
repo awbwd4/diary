@@ -1,0 +1,36 @@
+1. 정적 컨텐츠
+ - resources/static 폴더 내에 생성됨.
+
+- contoller에 경로 지정이 돼있지 않아도 접근할 수 있다.
+
+- 요청이 들어오면 was에서는 이 요청을 Spring Container의 controller로 먼저 보낸다.
+
+ - 즉, 우선순위는 controller가 더 높다는 말.
+
+ - 하지만 controller에는 해당 uri요청을 처리하는게 없으므로
+
+ - 다음에는 static 폴더를 뒤져본다.
+
+ - 정적 컨텐츠는 spring container가 없이도 서버에서 동작이 가능하지만, 구현할 수 있는것이 매우 제한적이다. 데이터를 주고 받고가 불가능함.
+ 
+2. mvc, 템플릿 엔진
+ - 정적 페이지일 때에는 html 변환 없이 그대로 브라우저로 던져줌
+ - 템플릿 엔진을 쓰는 경우 템플릿 엔진이 html로 변환 한 뒤에 브라우저로 던져준다.
+ 
+3. API
+ -@ResponseBody가 붙어있는 경우
+ 
+ - 기존에는 요청이 들어오면 Viewresolver를 통해서 맞는 html을 찾아서 반환해줬다
+ 
+ - 컨트롤러에 resoponsebody 어노테이션이 있는경우에는 HttpMessageConverter를 통해서 html없이 데이터를 그대로 반환하는데
+
+ - String 값인 경우에는 String 값으로 반환(String Converter)
+
+ - 객체타입으로 반환해야 하는 경우에는 json 형식으로 반환한다.(JsonConverter)
+ 
+ 4. 테스트
+ - junit 사용
+
+ - 테스트는 서로 순서 상관없이 진행이 된다.
+
+ - 즉 어떤게 먼저 어떤게 나중에 될수 있을지 모른다는것. 따라서 테스트 후에 항상 초기화를 해주어야 함.
