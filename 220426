@@ -1,0 +1,11 @@
+220426
+  createMemberForm.html에서 
+
+input태그의 name을 본다.
+
+input태그의 name값은 "name"이고
+
+이 폼이 컨트롤러로 넘어와서 파라미터 객체 내에 이름이 "name"일 필드를 알아서 찾고 알아서 세팅됨.
+
+이부분은 이후의 mvc 강의에서 다뤄짐
+
