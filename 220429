@@ -49,3 +49,29 @@
      - JPQL로 “select m from Member m where m.name = ? “을 생성함
      - findByNameAndId 라면
      - “select m from Member m where m.name = ? and m.id = ?” 생성
+     
+     
+     
+
+4. AOP(Aspect Oriented Programming)
+  1) 원리 : 공통 관심사항과 핵심 관심사항을 분리
+     - 모든 비즈니스 로직(가입, 조회 등)의 구동 시간을 확인하고 싶을 경우, 모든 메서드에 시간을 찍을수도 있지만 너무 비효율적
+     - 어차피 시간을 찍는건 모든 비즈니스 로직에 공통으로 적용이 되는것이므로
+     - 이 시간을 찍는 기능을 공통관심사항으로 두고 이를 proxy로 따로 처리하도록 하는것
+   
+  2) Proxy
+     (1). 사용법  
+		    -  @Aspect 어노테이션을 붙여줘야함.
+      -  @Component 를 붙이든 SpringConfig에 지정을 하든 해서 빈으로 등록
+		    - Object execute 메서드를 생성하여 핵심 관심사항인 joinPoint를 파라미터로 받고 이걸 처리하는걸 리턴하도록 함.
+    	(2) 원리
+		    - 만약 controller가 service를 호출할 경우
+		    - 진짜 Service가 호출되는 것이 아니라, 스프링에 의해 등록된 가짜 서비스(proxy)가 먼저 호출 된다.
+		    - 이후 joinPoint.proceed() 를 통해 진짜 Service가 호출된다!
+
+  3) AOP객체 생성 메서드의 순환 참조 문제 발생
+      - SpringConfig에 빈으로 등록을 할 경우 : @Around의 범위가 hellospring 패키지 전체이므로
+      - 이 TimeTraceAop를 구현하는 timeTraceAop메서드도 AOP처리를 하게된다.
+      - 그렇게 되면 자기자신을 참조하는것이 되므로 순환참조 문제 발생
+      - 따라서 그냥 @Component를 쓰든지
+      - 아님 @Around에 SpringConfig.java를 제외하도록 하면된다.
