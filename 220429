@@ -1,0 +1,29 @@
+22.04.29
+ 1. JDBC Template
+
+
+
+
+ 2. JPA(JAVA PERSISTANCDE API)
+  1) ORM, object-relationship-management : 관계형 데이터베이스의 엔티티를 객체처럼 다루도록 해준다.
+
+  2) JPA, hibernate : jpa는 자바 표준 인터페이스이고 hiberante는 그걸 구현한 여러가지중 하나.
+
+  3) Entity
+    - Member.class에 @Entity 어노테이션 : jpa가 관리하는 엔티티라는 뜻
+    - Member.class의 id 필드에 @Id 어노테이션 : 해당 필드를 pk로 지정
+    - @column(name=“username”) 어노테이션이 붙은 필드는, DB의 칼럼명이 “username”인 칼럼과 매핑된다.
+
+  4) EntityManager
+    - JpaMemberRepository에 EntityManager 필드를 선언하고, 생성자로 이를 구현하도록 함.
+   - JPA는 EntityManager로 모든게 동작한다.
+   - 	gradle과 application.properties에 jpa 설정이 되어있다면
+   -    어플리케이션이 동작할 때, 스프링부트가 알아서 entity manager를 bean으로 등록해준다.
+  5) JPQL
+   - 테이블이 아니라, 객체를 대상으로 쿼리를 날리면 이게 sql로 번역된다. 이게 jpql이다.
+   - pk가 아닌 칼럼 값을 조회할 때에는 jpql을 작성해야한다.
+  
+  6) Transaction
+   - JPA를 쓰려면 항상 transaction이 있어야 함.
+   - JPA는 모든 데이터 변경이 transaction안에서 실행이 돼야함.
+   - service계층인 MemberService에 @Transactional 추가
